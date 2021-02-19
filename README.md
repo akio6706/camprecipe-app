@@ -1,24 +1,64 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type    | Options                       |
+| ------------------ | ------- | ----------------------------- |
+| nickname           | string  | null: false                   |
+| email              | string  | null: false, uniqueness: true |
+| encrypted_password | string  | null: false                   |
+| name               | string  | null: false                   |
+| name_kana          | string  | null: false                   |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :recipes
+- has_many :comments
 
-* Configuration
+## recipes テーブル
 
-* Database creation
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| title       | string     | null: false                    |
+| description | string     | null: false                    |
+| level_id    | string     | null: false                    |
+| user_id     | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
+- belongs_to :user
+- has_many :comments
+- has_many :ingredients
+- has_many :processes
 
-* How to run the test suite
+## ingredients テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| ingredient | string     | null: false                    |
+| amount     | string     | null: false                    |
+| recipe_id  | references | null: false, foreign_key: true |
 
-* Deployment instructions
+### Association
+- belongs_to :recipe
 
-* ...
+## processes テーブル
+
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| process   | string     | null: false                    |
+| recipe_id | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :recipe
+
+## comments テーブル
+
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| text      | string     | null: false                    |
+| recipe_id | references | null: false, foreign_key: true |
+| user_id   | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :recipe
