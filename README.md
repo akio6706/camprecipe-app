@@ -21,6 +21,7 @@
 | ----------- | ---------- | ------------------------------ |
 | title       | string     | null: false                    |
 | description | string     | null: false                    |
+| people      | string     | null: false                    |
 | level_id    | string     | null: false                    |
 | user_id     | references | null: false, foreign_key: true |
 
