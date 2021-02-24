@@ -12,12 +12,21 @@
         <li class="nav-item">
           <a class="nav-link" href="#">レシピ作成</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">新規登録</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">ログイン</a>
-        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to current_user.nickname, "/", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '新規登録', new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
