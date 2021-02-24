@@ -20,9 +20,9 @@
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | title       | string     | null: false                    |
-| description | string     | null: false                    |
+| description | text       | null: false                    |
 | people      | string     | null: false                    |
-| level_id    | string     | null: false                    |
+| level_id    | integer    | null: false                    |
 | user_id     | references | null: false, foreign_key: true |
 
 ### Association
@@ -42,11 +42,11 @@
 ### Association
 - belongs_to :recipe
 
-## processes テーブル
+## procedures テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| process   | string     | null: false                    |
+| procedure | text       | null: false                    |
 | recipe_id | references | null: false, foreign_key: true |
 
 ### Association
