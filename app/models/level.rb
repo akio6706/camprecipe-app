@@ -5,7 +5,7 @@ class Level < ActiveHash::Base
     { id: 3, name: 'レベル2' },
     { id: 4, name: 'レベル3' }
   ]
-  
+
   include ActiveHash::Associations
   has_many :recipes
 end

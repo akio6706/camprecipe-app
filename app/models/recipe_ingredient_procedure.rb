@@ -19,4 +19,3 @@ class RecipeIngredientProcedure
     Procedure.create(procedure: procedure, recipe_id: recipe_id)
   end
 end
-
