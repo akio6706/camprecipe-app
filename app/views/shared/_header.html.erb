@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="/">TOP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">レシピ作成</a>
+          <%= link_to 'レシピ作成', new_recipe_path, class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
