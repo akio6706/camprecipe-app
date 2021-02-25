@@ -4,7 +4,7 @@ class Recipe < ApplicationRecord
   has_many :ingredients
   has_many :procedures
   has_one_attached :image
-  
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :level
 end

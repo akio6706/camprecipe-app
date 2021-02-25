@@ -57,4 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'mini_magick'
+gem 'active_hash'
 gem 'image_processing', '~> 1.2'

@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   end
 
   def new
-    
+    @recipe_ingredient_procedure = RecipeIngredientProcedure.new
   end
 
   def create
@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
       @recipe_ingredient_procedure.save
       redirect_to root_path
     else
-      render :index
+      render :new
     end
   end
 
