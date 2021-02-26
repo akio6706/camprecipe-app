@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_092442) do
 
   create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
-    t.text "decription", null: false
+    t.text "description", null: false
     t.string "people", null: false
     t.integer "level_id", null: false
     t.bigint "user_id"
