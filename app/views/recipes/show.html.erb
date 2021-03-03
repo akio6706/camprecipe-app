@@ -1,3 +1,35 @@
-<%= render "shared/header" %>
-<%= 'hello'%>
+<%= render "shared/second-header"%>
 
+<div class="col-lg-6 text-center mx-auto">
+  <h1>レシピ詳細</h1>
+  <br>
+  <div class="show">
+    <h5 class="show-level">
+      <%= "料理難易度：#{@recipe.level.name}" %>
+    </h5>
+    <h5 class="show-title">
+      <%= "料理名：#{@recipe.title}" %>
+    </h5>
+    <%= image_tag @recipe.image, class: "show-img-top"%>
+    <div class="show-body">
+      
+      <h5>料理の説明</h5>
+      <p class="show-text">
+        <%= @recipe.description%>
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    <% if user_signed_in? %>
+      <%= form_with(model: @recipe,local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+    </div>
+  </div>
+</div>

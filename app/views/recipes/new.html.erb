@@ -1,84 +1,72 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<%= render "shared/second-header"%>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-    <title>CampRecipe</title>
-  </head>
-  <%= render "shared/second-header"%>
-
-  <%= form_with model: @recipe_ingredient_procedure, url: recipes_path, id: 'new_user', class: 'col-lg-6 text-center mx-auto', local: true do |f| %>
-    <br><br>
-    <div class='form-header'>
-      <h1 class='form-header-text'>
-        レシピ投稿
-      </h1>
-    </div>
-    <br>
-    <%= render 'shared/error_messages', model: f.object %>
-    <div class="row">
-      <label for="title" class="form-label">料理名</label>
-      <%= f.text_field :title, class:"form-control", id:"title", placeholder:"例) えびとブロッコリーのアヒージョ" %>
-    </div>
-    <br>
-    <div class="row">
-      <label for="description" class="form-label">料理の画像</label>
-      <%= f.file_field :image, class:"form-control", id:"cook-image" %>
-    </div>
-    <br>
-    <div class="row">
-      <label for="level" class="form-label">料理の難易度</label>
-      <%= f.collection_select(:level_id, Level.all, :id, :name, {}, {class:"form-control"}) %>
-    </div>
-    <br>
-    <div class="row">
-      <label for="description" class="form-label">料理の説明</label>
-      <%= f.text_area :description, class:"form-control form-description", id:"description", placeholder:"papapapappapapapa"%>
-    </div>
-    <br>
-    <div class="row">
-      <label for="people" class="form-label">何人前</label>
-      <%= f.text_field :people, class:"form-control", id:"people", placeholder:"例) １〜２人前" %>
-    </div>
-    <br>
-    <div class="d-flex justify-content-around">
-      <div class="flex-column">
-        <div class="row">
-          <label for="ingredient" class="form-label">材料名</label>
-          <%= f.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖" %>
-        </div>
-        <div class="row">
-          <%= f.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖" %>
-        </div>
-        <div class="row">
-          <%= f.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖" %>
-        </div>
+<%= form_with model: @recipe_ingredient_procedure, url: recipes_path, id: 'new_user', class: 'col-lg-6 text-center mx-auto', local: true do |f| %>
+  <br><br>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      レシピ投稿
+    </h1>
+  </div>
+  <br>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class="row">
+    <label for="title" class="form-label">料理名</label>
+    <%= f.text_field :title, class:"form-control", id:"title", placeholder:"例) えびとブロッコリーのアヒージョ" %>
+  </div>
+  <br>
+  <div class="row">
+    <label for="description" class="form-label">料理の画像</label>
+    <%= f.file_field :image, class:"form-control", id:"cook-image" %>
+  </div>
+  <br>
+  <div class="row">
+    <label for="level" class="form-label">料理の難易度</label>
+    <%= f.collection_select(:level_id, Level.all, :id, :name, {}, {class:"form-control"}) %>
+  </div>
+  <br>
+  <div class="row">
+    <label for="description" class="form-label">料理の説明</label>
+    <%= f.text_area :description, class:"form-control form-description", id:"description", placeholder:"papapapappapapapa"%>
+  </div>
+  <br>
+  <div class="row">
+    <label for="people" class="form-label">何人前</label>
+    <%= f.text_field :people, class:"form-control", id:"people", placeholder:"例) １〜２人前" %>
+  </div>
+  <br>
+  <div class="d-flex justify-content-around">
+    <div class="flex-column">
+      <div class="row">
+        <label for="ingredient" class="form-label">材料名</label>
+        <%= f.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖" %>
       </div>
-      <div class="flex-column">
-        <div class="row">
-          <label for="amount" class="form-label">分量</label>
-          <%= f.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１" %>
-        </div>
-        <div class="row">
-          <%= f.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１" %>
-        </div>
-        <div class="row">
-          <%= f.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１" %>
-        </div>
+      <div class="row">
+        <%= f.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖" %>
+      </div>
+      <div class="row">
+        <%= f.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖" %>
       </div>
     </div>
-    <br>
-    <div class="row">
-      <label for="procedure" class="form-label">料理手順</label>
-      <%= f.text_field :procedure, class:"form-control", id:"procedure", placeholder:"例) ①調味料の〇〇と〇〇を混ぜる" %>
+    <div class="flex-column">
+      <div class="row">
+        <label for="amount" class="form-label">分量</label>
+        <%= f.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１" %>
+      </div>
+      <div class="row">
+        <%= f.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１" %>
+      </div>
+      <div class="row">
+        <%= f.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１" %>
+      </div>
     </div>
-    <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  <% end %>
-  <%= render "shared/second-header"%>
-</html>
+  </div>
+  <br>
+  <div class="row">
+    <label for="procedure" class="form-label">料理手順</label>
+    <%= f.text_field :procedure, class:"form-control", id:"procedure", placeholder:"例) ①調味料の〇〇と〇〇を混ぜる" %>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>
+
+<%= render "shared/second-header"%>
