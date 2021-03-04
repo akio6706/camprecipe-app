@@ -2,6 +2,9 @@
 
 <div class="col-lg-6 text-center mx-auto">
   <h1>レシピ詳細</h1>
+
+  <%= link_to "レシピ編集", edit_recipe_path(@recipe.id) ,class:"btn btn-success"%>
+  <%= link_to "レシピ削除", root_path ,class:"btn btn-danger"%>
   <br>
   <div class="show">
     <h5 class="show-level">
