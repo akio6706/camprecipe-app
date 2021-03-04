@@ -1,6 +1,10 @@
 # アプリ名
 CampRecipe
 
+![top](readme画像/トップページ.png)
+
+<br>
+
 # 概要
 　キャンプなどの野外で行う料理のレシピを共有するサービスです。
 
@@ -128,3 +132,6 @@ CampRecipe
 ### Association
 - belongs_to :user
 - belongs_to :recipe
+
+# ER図
+![alt](readme画像/er図.png)
