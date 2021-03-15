@@ -2,7 +2,8 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.includes(:user)
+
   end
 
   def new
@@ -11,12 +12,8 @@ class RecipesController < ApplicationController
 
   def create
     @recipe_ingredient_procedure = RecipeIngredientProcedure.new(recipe_params)
-    if @recipe_ingredient_procedure.valid?
-      @recipe_ingredient_procedure.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    @recipe_ingredient_procedure.save
+    redirect_to root_path
   end
 
   def show
@@ -25,26 +22,32 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-    @ingredient = Ingredient.find(params[:id])
-    @procedure = Procedure.find(params[:id])
     @recipe_ingredient_procedure = RecipeIngredientProcedure.new
   end
 
   def update
-    @recipe_ingredient_procedure = RecipeIngredientProcedure.new
-    if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+    @recipe = Recipe.find(params[:id])
+    
+    @recipe_ingredient_procedure = RecipeIngredientProcedure.new(recipe_params)
+    if @recipe_ingredient_procedure.valid?
+      @recipe_ingredient_procedure.update
+      redirect_to root_path
     else
       render :edit
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to root_path
+  end
   private
 
   def recipe_params
-    params.require(:recipe_ingredient_procedure).permit(:image, :title, :description, :people, :level_id, :ingredient, :amount,
-                                                        :procedure).merge(
-                                                          user_id: current_user.id
+    params.require(:recipe_ingredient_procedure).permit(:image, :title, :description, :people, :level_id,
+                                                        :procedure, :ingredient, :amount, ingredients: [:ingredient, :amount]).merge(
+                                                        user_id: current_user.id
                                                         )
   end
 end

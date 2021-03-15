@@ -6,4 +6,5 @@ class Recipe < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :level
+
 end
