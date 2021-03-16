@@ -16,26 +16,21 @@ class RecipeIngredientProcedure
 
   def save
     recipe = Recipe.new(image: image, title: title, description: description, people: people, level_id: level_id,
-                          user_id: user_id)
-    if recipe.valid?
-      recipe.save
-    end
+                        user_id: user_id)
+    recipe.save if recipe.valid?
 
     ingredients.each do |ingredient|
       value = ingredient[1]
       value2 = Ingredient.new(ingredient: value[:ingredient], amount: value[:amount], recipe_id: recipe.id)
-      if value2.valid?
-        value2.save
-      end
+      value2.save if value2.valid?
     end
 
     value3 = Procedure.new(procedure: procedure, recipe_id: recipe.id)
-    if value3.valid?
-      value3.save
-    end
+    value3.save if value3.valid?
   end
+
   def update
     @recipe.update(image: image, title: title, description: description, people: people, level_id: level_id,
-                          user_id: user_id)
+                   user_id: user_id)
   end
 end
