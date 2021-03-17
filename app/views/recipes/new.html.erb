@@ -11,7 +11,7 @@
   <%= render 'shared/error_messages', model: f.object %>
   <div class="row">
     <label for="title" class="form-label">料理名</label>
-    <%= f.text_area :title, class:"form-control", id:"title", placeholder:"例) えびとブロッコリーのアヒージョ" %>
+    <%= f.text_field :title, class:"form-control", id:"title", placeholder:"例) えびとブロッコリーのアヒージョ" %>
   </div>
   <div class="row">
     <label for="description" class="form-label">料理の画像</label>
@@ -29,20 +29,27 @@
   </div>
   <div class="row">
     <label for="people" class="form-label">何人前</label>
-    <%= f.text_area :people, class:"form-control", id:"people", placeholder:"例) １〜２人前" %>
+    <%= f.text_field :people, class:"form-control", id:"people", placeholder:"例) １〜２人前" %>
+  </div>
+
+  <div class="d-flex justify-content-around">
+    <div class="flex-column">
+      <label for="ingredient" class="form-label">材料名</label>
+    </div>
+    <div class="flex-column">
+      <label for="amount" class="form-label">分量</label>
+    </div>
   </div>
   <% 10.times do |i| %>
   <%= f.fields_for "ingredients[#{i}]" do |field| %>
   <div class="d-flex justify-content-around">
     <div class="flex-column">
       <div class="row">
-        <label for="ingredient" class="form-label">材料名</label>
         <%= field.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖" %>
       </div>
     </div>
     <div class="flex-column">
       <div class="row">
-        <label for="amount" class="form-label">分量</label>
         <%= field.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１" %>
       </div>
     </div>
