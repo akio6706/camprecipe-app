@@ -12,8 +12,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe_ingredient_procedure = RecipeIngredientProcedure.new(recipe_params)
-    @recipe_ingredient_procedure.save
-    redirect_to root_path
+    if @recipe_ingredient_procedure.valid?
+      @recipe_ingredient_procedure.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
