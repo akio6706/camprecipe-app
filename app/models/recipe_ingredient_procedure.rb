@@ -8,8 +8,6 @@ class RecipeIngredientProcedure
     validates :description
     validates :people
     validates :user_id
-    validates :ingredient
-    validates :amount
     validates :procedure
   end
   validates :level_id, numericality: { other_than: 1 }
