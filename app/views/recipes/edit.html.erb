@@ -22,7 +22,7 @@
   <br>
   <div class="row">
     <label for="level" class="form-label">料理の難易度</label>
-    <%= f.collection_select(:level_id, Level.all, :id, :name, {}, {class:"form-control"}) %>
+    <%= f.collection_select(:level_id, Level.all, :id, :name, {}, {class:"form-control", value: "#{@recipe.level.name}"}) %>
   </div>
   <br>
   <div class="row">
@@ -37,20 +37,28 @@
   <br>
   <div class="d-flex justify-content-around">
     <div class="flex-column">
-      <% @recipe.ingredients.length.times do |i| %>
+      <label for="ingredient" class="form-label">材料名</label>
+    </div>
+    <div class="flex-column">
+      <label for="amount" class="form-label">分量</label>
+    </div>
+  </div>
+  <% 10.times do |i| %>
+  <%= f.fields_for "ingredients[#{i}]" do |field| %>
+  <div class="d-flex justify-content-around">
+    <div class="flex-column">
       <div class="row">
-        <label for="ingredient" class="form-label">材料名</label>
-        <%= f.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖", value: "#{@recipe.ingredients[i].ingredient}" %>
+        <%= field.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖", value: "#{@recipe.ingredients[i].ingredient}" %>
       </div>
     </div>
     <div class="flex-column">
       <div class="row">
-        <label for="amount" class="form-label">分量</label>
-        <%= f.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１", value: "#{@recipe.ingredients[i].amount}" %>
+        <%= field.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１", value: "#{@recipe.ingredients[i].amount}" %>
       </div>
     </div>
-    <% end %>
   </div>
+  <% end %>
+  <% end %>
   <br>
   <% @recipe.procedures.each do |procedure| %>
   <div class="row">
