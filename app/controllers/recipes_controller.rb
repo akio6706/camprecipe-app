@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.includes(:user)
-
   end
 
   def new
@@ -32,7 +31,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    
+
     @recipe_ingredient_procedure = RecipeIngredientProcedure.new(recipe_params)
     if @recipe_ingredient_procedure.valid?
       @recipe_ingredient_procedure.update
@@ -47,6 +46,7 @@ class RecipesController < ApplicationController
     @recipe.destroy
     redirect_to root_path
   end
+
   private
 
   def recipe_params

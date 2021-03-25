@@ -10,9 +10,13 @@ CampRecipe
 
 # URL
 
+Basic認証
+- ユーザー名:33916
+- password:1202
+
 ログイン情報(テスト用)
 - email:test@example
-- test11
+- password:test11
 
 # 制作背景（意図）
 　趣味であるキャンプを通じて感じた課題を解消すべくこのアプリケーションを制作した。
