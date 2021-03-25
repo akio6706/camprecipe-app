@@ -1,6 +1,6 @@
 class RecipeIngredientProcedure
   include ActiveModel::Model
-  attr_accessor :image, :title, :description, :people, :level_id, :user_id, :ingredient, :amount, :ingredients, :procedure
+  attr_accessor :image, :title, :description, :people, :level_id, :user_id, :procedure, :procedures, :ingredient, :amount, :ingredients
 
   with_options presence: true do
     validates :image
@@ -26,9 +26,12 @@ class RecipeIngredientProcedure
       end
     end
 
-    value3 = Procedure.new(procedure: procedure, recipe_id: recipe.id)
-    if value3.valid?
-      value3.save
+    procedures.each do |procedure|
+      value3 = procedure[1]
+      value4 = Procedure.new(procedure: value3[:procedure], recipe_id: recipe.id)
+      if value4.valid?
+        value4.save
+      end
     end
   end
   def update
