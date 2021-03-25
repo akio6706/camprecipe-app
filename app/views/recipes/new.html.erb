@@ -56,10 +56,19 @@
   </div>
   <% end %>
   <% end %>
-  <div class="row">
-    <label for="procedure" class="form-label">料理手順</label>
-    <%= f.text_area :procedure, class:"form-control", id:"procedure", placeholder:"例) ①調味料の〇〇と〇〇を混ぜる" %>
+
+  <label for="procedure" class="form-label">料理手順</label>
+  <% 6.times do |i| %>
+  <%= f.fields_for "procedures[#{i}]" do |field| %>
+  <div class="procedures">
+    <div class="row">
+      <%= "料理工程#{i + 1}"%>
+      <%= field.text_area :procedure, class:"form-control", id:"procedure", placeholder:"例) ①調味料の〇〇と〇〇を混ぜる" %>
+    </div>
   </div>
+  <% end %>
+  <% end %>
+
   <br>
   <button type="submit" class="btn btn-primary">Submit</button>
 <% end %>
