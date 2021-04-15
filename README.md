@@ -129,7 +129,7 @@ Basic認証
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| text      | string     | null: false                    |
+| text      | text       | null: false                    |
 | recipe_id | references | null: false, foreign_key: true |
 | user_id   | references | null: false, foreign_key: true |
 
