@@ -22,7 +22,7 @@
       </p>
     </div>
   </div>
-  <div class="container">
+  <div class="containe">
     <% if user_signed_in? %>
       <%= form_with(model: [@recipe,@comment],local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントする", rows: "2" %><br>

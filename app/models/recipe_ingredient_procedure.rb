@@ -35,4 +35,5 @@ class RecipeIngredientProcedure
     @recipe.update(image: image, title: title, description: description, people: people, level_id: level_id,
                    user_id: user_id)
   end
+
 end
