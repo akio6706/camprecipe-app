@@ -1,0 +1,14 @@
+<div class="col-sm">
+  <div class="card card-show" style="width: 18rem;">
+    <%= image_tag recipe.image, class: "card-img-top" %>
+    <div class="card-body">
+      <h5 class="card-title">
+        <%= recipe.title %>
+      </h5>
+      <p class="card-text">
+        <%= recipe.description%>
+      </p>
+      <%= link_to "レシピ詳細", recipe_path(recipe.id) ,class:"btn btn-success"%>
+    </div>
+  </div>
+</div>
