@@ -12,7 +12,7 @@ class User < ApplicationRecord
     validates :name_kana, format: { with: /\A[ぁ-んー－]+\z/, message: 'はひらがなで入力して下さい' }
   end
 
-  def update_without_current_password(params, *options)
+  def update_without_current_password(params, *_options)
     params.delete(:current_password)
   end
 
