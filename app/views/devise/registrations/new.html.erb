@@ -23,7 +23,7 @@
     <%= render 'shared/error_messages', model: f.object %>
     <div class="mb-3">
       <label for="exampleInputNickname" class="form-label">ニックネーム</label>
-      <%= f.text_area :nickname, class:"form-control", id:"nickname", placeholder:"例) furima太郎" %>
+      <%= f.text_field :nickname, class:"form-control", id:"nickname", placeholder:"例) furima太郎" %>
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -39,11 +39,11 @@
     </div>
     <div class="mb-3">
       <label for="exampleInputName" class="form-label">名前(フルネーム)</label>
-      <%= f.text_area :name, class:"form-control", id:"name", placeholder:"例) 山田" %>
+      <%= f.text_field :name, class:"form-control", id:"name", placeholder:"例) 山田" %>
     </div>
     <div class="mb-3">
       <label for="exampleInputNamekana" class="form-label">ふりがな</label>
-      <%= f.text_area :name_kana, class:"form-control", id:"name-kana", placeholder:"例) ヤマダ" %>
+      <%= f.text_field :name_kana, class:"form-control", id:"name-kana", placeholder:"例) ヤマダ" %>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   <% end %>
