@@ -49,6 +49,10 @@ class RecipesController < ApplicationController
     redirect_to root_path
   end
 
+  def level
+    @recipe1 = Recipe.where(level: "レベル1")
+  end
+
   private
 
   def recipe_params
