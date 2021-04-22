@@ -52,6 +52,12 @@ class RecipesController < ApplicationController
   def level1
     @recipe1 = Recipe.where(level_id: 2)
   end
+  def level2
+    @recipe2 = Recipe.where(level_id: 3)
+  end
+  def level3
+    @recipe3 = Recipe.where(level_id: 4)
+  end
 
   private
 
