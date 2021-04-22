@@ -49,8 +49,8 @@ class RecipesController < ApplicationController
     redirect_to root_path
   end
 
-  def level
-    @recipe1 = Recipe.where(level: "レベル1")
+  def level1
+    @recipe1 = Recipe.where(level_id: 2)
   end
 
   private
