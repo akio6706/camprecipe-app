@@ -1,0 +1,15 @@
+<%= render "shared/header" %>
+<div class="jumbotron">
+  <div class='index-content'>
+    <br><br><h1 class='text-white'>~ Go to Camping ~</h1>
+  </div>
+</div>
+<br><br>
+<div class="col-lg-6 text-center mx-auto">
+  <h1>検索結果 レシピ一覧</h1>
+</div>
+<div class="container">
+  <div class="row">
+  <%= render partial: 'recipe', collection: @recipe %>
+  </div>
+</div>
