@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'level1'
       get 'level2'
       get 'level3'
+      get 'search'
     end
   end
   resources :users, only: :show
