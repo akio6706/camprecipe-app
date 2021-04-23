@@ -1,1 +1,23 @@
-<br><br><h1>ここはフッターです！！</h1>
+<div class='footer'>
+  <div class='footer-contents'>
+    <div class='camp-details'>
+      <h2 class='footer-content-head'>CampRecipeについて</h2>
+      <p class="footer-link">キャンプの人気が近年高まっていると<br>
+        思います。私もその一人なのですが、<br>
+        レシピいつも悩まされています。<br>
+        そんな悩まれている方をお助け<br>
+        できたらいいなと思います！！
+      </p>
+    </div>
+    <div class='camp-details'>
+      <h2 class='footer-content-head'>CampRecipeを見る</h2>
+      <ul>
+        <li><%= link_to 'レシピ投稿', new_recipe_path, class: "footer-link" %></li>
+        <li><%= link_to 'レシピ難易度１一覧', level1_recipes_path, class: "footer-link" %></li>
+        <li><%= link_to 'レシピ難易度2一覧', level2_recipes_path, class: "footer-link" %></li>
+        <li><%= link_to 'レシピ難易度3一覧', level3_recipes_path, class: "footer-link" %></li>
+      </ul>
+    </div>
+  </div>
+  <%= link_to 'Camp Recipe', root_path, class: "footer-brand" %>
+</div>
