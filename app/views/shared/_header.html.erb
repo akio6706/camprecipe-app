@@ -31,10 +31,12 @@
           </li>
         <% end %>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <%= form_with(url: search_recipes_path, local: true, method: :get) do |form| %>
+      <div class="d-flex">
+        <%= form.text_field :keyword, placeholder: "レシピを検索", class: "form-control me-2" %>
+        <%= form.submit "検索", class: "btn btn-outline-success" %>
+      </div>
+      <% end %>
     </div>
   </div>
 </nav>

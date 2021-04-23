@@ -59,6 +59,10 @@ class RecipesController < ApplicationController
     @recipe3 = Recipe.where(level_id: 4)
   end
 
+  def search
+    @recipe = Recipe.search(params[:keyword])
+  end
+
   private
 
   def recipe_params
