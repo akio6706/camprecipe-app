@@ -54,7 +54,7 @@
 
 /* //footer */
 
-.footer {
+footer {
   width: 100vw;
   padding: 5vh 0;
   color: #FFF;
@@ -93,4 +93,15 @@ li {
   text-decoration: none;
   font-size: 30px;
   color: #FFF;
+}
+
+/* //font */
+
+@font-face {
+  font-family: 'gomarice_mukasi_mukasi';
+  src: asset_url('/assets/gomarice_mukasi_mukasi.ttf') format("truetype");
+}
+
+.fo {
+  font-family: 'gomarice_mukasi_mukasi';
 }
