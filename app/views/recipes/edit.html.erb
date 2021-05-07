@@ -8,33 +8,30 @@
     </h1>
   </div>
   <br>
-
   <%= render 'shared/error_messages', model: f.object %>
   <div class="row">
     <label for="title" class="form-label">料理名</label>
-    <%= f.text_field :title, class:"form-control", id:"title", placeholder:"例) えびとブロッコリーのアヒージョ" , value: "#{@recipe.title}" %>
+    <%= f.text_field :title, class:"form-control", id:"title", placeholder:"例) えびとブロッコリーのアヒージョ", value: "#{@recipe.title}" %>
   </div>
-  <br>
   <div class="row">
     <label for="description" class="form-label">料理の画像</label>
     <%= f.file_field :image, class:"form-control", id:"cook-image", value: "#{@recipe.image}" %>
   </div>
-  <br>
+  
   <div class="row">
     <label for="level" class="form-label">料理の難易度</label>
     <%= f.collection_select(:level_id, Level.all, :id, :name, {}, {class:"form-control", value: "#{@recipe.level.name}"}) %>
   </div>
-  <br>
+
   <div class="row">
     <label for="description" class="form-label">料理の説明</label>
-    <%= f.text_area :description, class:"form-control form-description", id:"description", placeholder:"papapapappapapapa", value: "#{@recipe.description}"%>
+    <%= f.text_area :description, class:"form-control", id:"description", placeholder:"papapapappapapapa", value: "#{@recipe.description}"%>
   </div>
-  <br>
   <div class="row">
     <label for="people" class="form-label">何人前</label>
-    <%= f.text_field :people, class:"form-control", id:"people", placeholder:"例) １〜２人前", value: "#{@recipe.people}" %>
+    <%= f.text_field :people, class:"form-control", id:"people", placeholder:"例) １〜２人前", value: "#{@recipe.people}"  %>
   </div>
-  <br>
+
   <div class="d-flex justify-content-around">
     <div class="flex-column">
       <label for="ingredient" class="form-label">材料名</label>
@@ -59,13 +56,19 @@
   </div>
   <% end %>
   <% end %>
-  <br>
-  <% @recipe.procedures.each do |procedure| %>
-  <div class="row">
-    <label for="procedure" class="form-label">料理手順</label>
-    <%= f.text_field :procedure, class:"form-control", id:"procedure", placeholder:"例) ①調味料の〇〇と〇〇を混ぜる", value: "#{procedure.procedure}" %>
+
+  <label for="procedure" class="form-label">料理手順</label>
+  <% 6.times do |i| %>
+  <%= f.fields_for "procedures[#{i}]" do |field| %>
+  <div class="procedures">
+    <div class="row">
+      <%= "料理工程#{i + 1}"%>
+      <%= field.text_area :procedure, class:"form-control", id:"procedure", placeholder:"例) ①調味料の〇〇と〇〇を混ぜる", value: "#{@recipe.procedures[i].procedure}" %>
+    </div>
   </div>
   <% end %>
+  <% end %>
+
   <br>
   <button type="submit" class="btn btn-primary new-btn">Submit</button>
 <% end %>
