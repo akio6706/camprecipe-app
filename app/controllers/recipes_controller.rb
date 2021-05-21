@@ -11,7 +11,6 @@ class RecipesController < ApplicationController
 
   def create
     @recipe_ingredient_procedure = RecipeIngredientProcedure.new(recipe_params)
-    binding.pry
     if @recipe_ingredient_procedure.valid?
       @recipe_ingredient_procedure.save
       redirect_to root_path
@@ -33,8 +32,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-
-    @recipe_ingredient_procedure = RecipeIngredientProcedure.new(recipe_params)
+    @recipe_ingredient_procedure = RecipeIngredientProcedure.new(recipe_update_params)
     if @recipe_ingredient_procedure.valid?
       @recipe_ingredient_procedure.update
       redirect_to root_path
@@ -69,6 +67,12 @@ class RecipesController < ApplicationController
     params.require(:recipe_ingredient_procedure).permit(:image, :title, :description, :people, :level_id,
                                                         :ingredient, :amount, :procedure, ingredients: [:ingredient, :amount], procedures: [:procedure]).merge(
                                                           user_id: current_user.id
+                                                        )
+  end
+  def recipe_update_params
+    params.require(:recipe_ingredient_procedure).permit(:image, :title, :description, :people, :level_id,
+                                                        :ingredient, :amount, :procedure, ingredients: [:ingredient, :amount], procedures: [:procedure]).merge(
+                                                          user_id: current_user.id, recipe_id: @recipe.id
                                                         )
   end
 end
