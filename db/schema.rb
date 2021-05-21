@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_04_15_092630) do
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ingredient"
     t.string "amount"
+    t.integer "inum"
     t.bigint "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_04_15_092630) do
 
   create_table "procedures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "procedure"
+    t.integer "pnum"
     t.bigint "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

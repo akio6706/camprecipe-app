@@ -15,12 +15,13 @@
   </div>
   <div class="row">
     <label for="description" class="form-label">料理の画像</label>
+    <%= "再度選択して下さい" %>
     <%= f.file_field :image, class:"form-control", id:"cook-image", value: "#{@recipe.image}" %>
   </div>
   
   <div class="row">
     <label for="level" class="form-label">料理の難易度</label>
-    <%= f.collection_select(:level_id, Level.all, :id, :name, {}, {class:"form-control", value: "#{@recipe.level.name}"}) %>
+    <%= f.collection_select(:level_id, Level.all, :id, :name, {selected: @recipe.level_id} , {class:"form-control"}) %>
   </div>
 
   <div class="row">
@@ -45,12 +46,13 @@
   <div class="d-flex justify-content-around">
     <div class="flex-column">
       <div class="row">
-        <%= field.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖", value: "#{@recipe.ingredients[i].ingredient}" %>
+        <% value = Ingredient.find_by(recipe_id: @recipe.id, inum: i) %>
+        <%= field.text_field :ingredient, class:"form-control", id:"ingredient", placeholder:"例) 砂糖", value: "#{value.ingredient}" %>
       </div>
     </div>
     <div class="flex-column">
       <div class="row">
-        <%= field.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１", value: "#{@recipe.ingredients[i].amount}" %>
+        <%= field.text_field :amount, class:"form-control", id:"amount", placeholder:"例) 大さじ１", value: "#{value.amount}" %>
       </div>
     </div>
   </div>
@@ -63,7 +65,8 @@
   <div class="procedures">
     <div class="row">
       <%= "料理工程#{i + 1}"%>
-      <%= field.text_area :procedure, class:"form-control", id:"procedure", placeholder:"例) ①調味料の〇〇と〇〇を混ぜる", value: "#{@recipe.procedures[i].procedure}" %>
+      <% value2 = Procedure.find_by(recipe_id: @recipe.id, pnum: i) %>
+      <%= field.text_area :procedure, class:"form-control", id:"procedure", placeholder:"例) ①調味料の〇〇と〇〇を混ぜる", value: "#{value2.procedure}" %>
     </div>
   </div>
   <% end %>
