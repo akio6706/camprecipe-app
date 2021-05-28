@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: camprecipe_app_production
-  username: camprecipe_app
-  password: <%= ENV['CAMPRECIPE_APP_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
