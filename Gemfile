@@ -55,13 +55,13 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-group :production do
-  gem 'unicorn', '5.4.1'
-end
-
 gem 'devise'
 gem 'mini_magick'
 gem 'active_hash'
 gem 'image_processing', '~> 1.2'
 gem 'pry-rails'
 gem "aws-sdk-s3", require: false
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
