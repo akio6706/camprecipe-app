@@ -237,7 +237,7 @@ GEM
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     unicode-display_width (2.0.0)
-    unicorn (5.4.1)
+    unicorn (6.0.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.9)
@@ -287,7 +287,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
-  unicorn (= 5.4.1)
+  unicorn
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
